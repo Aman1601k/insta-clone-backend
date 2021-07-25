@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
-const Post = mongoose.model('Post') 
+const Post = mongoose.model('Post')  
 
 const unlikePost = (req,res) => {
     
-    Post.findOneAndUpdate(req.body.postId , {
+    Post.findByIdAndUpdate(req.body.postId , {
         $pull:{likes:req.user._id}
     },{
         new: true
