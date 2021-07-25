@@ -3,6 +3,7 @@ const Post = mongoose.model('Post')
 
 const allPost = (req,res) => {
     Post.find()
+    // Post.find({postedBy: { $ne : req.user._id }})
     .populate("postedBy" , "_id name profilePicture")
     .populate("comments.postedBy" , "_id name profilePicture")
     .sort("-createdAt")
