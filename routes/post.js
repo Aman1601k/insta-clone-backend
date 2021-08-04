@@ -11,6 +11,9 @@ const comment = require('../controllers/post/comment');
 const deletepost = require('../controllers/post/deletepost');
 const deletecomment = require('../controllers/post/deletecomment');
 const requireLogin = require('../middlewares/requireLogin');
+const savePost = require('../controllers/post/savePost');
+const unsavePost = require('../controllers/post/unsavePost');
+const getSavedPost = require('../controllers/post/getSavedPost');
 
 router.get('/allpost', requireLogin, allPost);
 router.get('/getsubpost', requireLogin, getsubpost);
@@ -21,5 +24,8 @@ router.put('/unlike' , requireLogin, unlikePost);
 router.put('/comment' , requireLogin, comment);
 router.delete('/deletepost/:postId', requireLogin, deletepost);
 router.delete('/deletecomment/:postId/:commentId', requireLogin, deletecomment);
+router.post('/savepost', requireLogin, savePost);
+router.post('/unsavepost', requireLogin, unsavePost);
+router.post('/get-savedposts', requireLogin, getSavedPost);
 
 module.exports = router

@@ -14,7 +14,6 @@ const unfollowUser = (req,res) => {
             $pull:{following:req.body.unfollowId}
         },{new:true}).select("-password").then(result => {
             res.status(200).json(result)
-            console.log("uuuuunnnnnfolllowwww================================",result)
         }).catch(err => {
             return res.status(206).json({error:err})
         })

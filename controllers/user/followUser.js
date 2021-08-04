@@ -15,7 +15,6 @@ const followUser = (req,res) => {
             $push:{following:req.body.followId}
         },{new:true}).select("-password").then(result => {
             res.status(200).json(result)
-            console.log("folllowwww================================",result)
         }).catch(err => {
             return res.status(206).json({error:err})
         })
